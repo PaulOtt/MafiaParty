@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Event sheet 1</name>
+    <events>
+        <variable constant="0" name="ScoreRight" sid="5702368838418558" static="0" type="number">0</variable>
+        <variable constant="0" name="ScoreLeft" sid="8535367273249603" static="0" type="number">0</variable>
+        <variable constant="0" name="DeviceID2_Move" sid="3771686039003392" static="0" type="number">0</variable>
+        <variable constant="0" name="DeviceID1_Move" sid="3125130464879804" static="0" type="number">0</variable>
+        <variable constant="0" name="DeviceID2" sid="9974100948324811" static="0" type="number">0</variable>
+        <variable constant="0" name="DeviceID1" sid="9974710132032622" static="0" type="number">0</variable>
+        <event-block sid="293682867570593">
+            <conditions>
+                <condition id="-25" name="On loader layout complete" sid="2351311167350166" type="System" />
+            </conditions>
+            <actions>
+                <action id="3" name="Game ready" sid="2587117303863211" type="AirConsole" />
+            </actions>
+        </event-block>
+        <event-block sid="5336486875330162">
+            <conditions>
+                <condition id="2" name="On device join" sid="7925310463595786" type="AirConsole" />
+            </conditions>
+            <actions>
+                <action id="0" name="Add key" sid="736496360920233" type="Dictionary">
+                    <param id="0" name="Key">&quot;&quot; &amp; AirConsole.DeviceIDJoin</param>
+                    <param id="1" name="Value">&quot;&quot; &amp; AirConsole.NicknameJoin</param>
+                </action>
+                <action id="-3" name="Create object" sid="766539166321186" type="System">
+                    <param id="0" name="Object to create">Avatar</param>
+                    <param id="1" name="Layer">0</param>
+                    <param id="2" name="X">(120 * Dictionary.Count) - 60</param>
+                    <param id="3" name="Y">50</param>
+                </action>
+                <action id="4" name="Set animation" sid="608842883386598" type="Avatar">
+                    <param id="0" name="Animation">&quot;A&quot; &amp; Dictionary.Count</param>
+                    <param id="1" name="From">1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="981362016837737">
+                    <conditions>
+                        <condition id="0" name="Compare text" sid="639666905471242" type="PlayerName">
+                            <param id="0" name="Text to compare">&quot;PlayerName&quot;</param>
+                            <param id="1" name="Case sensitivity">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="878813367150625" type="PlayerName">
+                            <param id="0" name="Text">AirConsole.NicknameJoin</param>
+                        </action>
+                        <action id="-3" name="Set position" sid="310534923410387" type="PlayerName">
+                            <param id="0" name="X">(120 * Dictionary.Count) - 120</param>
+                            <param id="1" name="Y">85</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="852195144930248">
+            <conditions>
+                <condition id="7" name="On any device left" sid="382657762895528" type="AirConsole" />
+            </conditions>
+            <actions>
+                <action id="2" name="Delete key" sid="191383447817110" type="Dictionary">
+                    <param id="0" name="Key">&quot;&quot; &amp; AirConsole.DeviceIDLeft</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="4917836821625372">
+            <conditions>
+                <condition id="5" name="On message" sid="5586979389551446" type="AirConsole" />
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="6423854131112854" type="System">
+                    <param id="0" name="Variable">DeviceID1_Move</param>
+                    <param id="1" name="Value">-1</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="401355536248670">
+                    <conditions>
+                        <condition id="-8" name="Compare two values" sid="766948331398492" type="System">
+                            <param id="0" name="First value">left(AirConsole.Message,4)</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Second value">&quot;NAME&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <variable constant="0" name="foundIt" sid="442627211844167" static="0" type="number">0</variable>
+                        <event-block sid="840787010006153">
+                            <conditions>
+                                <condition id="1" name="For each key" sid="658135795714991" type="Dictionary" />
+                                <condition id="2" name="Compare current value" sid="862962252456355" type="Dictionary">
+                                    <param id="0" name="Comparison">0</param>
+                                    <param id="1" name="Value">right(AirConsole.Message, len(AirConsole.Message)-4)</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="592979522901259" type="System">
+                                    <param id="0" name="Variable">foundIt</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="429819333741247">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="560827907760004" type="System">
+                                    <param id="0" name="Variable">foundIt</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="122211200230906">
+                                    <conditions>
+                                        <condition id="0" name="Compare text" sid="201328898235146" type="PlayerName">
+                                            <param id="0" name="Text to compare">&quot;&quot; &amp; AirConsole.Nickname</param>
+                                            <param id="1" name="Case sensitivity">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="1" name="Set key" sid="685648395025978" type="Dictionary">
+                                            <param id="0" name="Key">&quot;&quot; &amp; AirConsole.DeviceIDJoin</param>
+                                            <param id="1" name="Value">right(AirConsole.Message, len(AirConsole.Message)-4)</param>
+                                        </action>
+                                        <action id="0" name="Set text" sid="706910876876130" type="PlayerName">
+                                            <param id="0" name="Text">Dictionary.Get(&quot;&quot; &amp; AirConsole.DeviceID)</param>
+                                        </action>
+                                        <action id="1" name="Send data" sid="161939895045405" type="AirConsole">
+                                            <param id="0" name="Device ID">AirConsole.DeviceIDJoin</param>
+                                            <param id="1" name="Data">&quot;NAME&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-block sid="6253512704324084">
+            <conditions>
+                <condition id="1" name="On specific message" sid="2109294561206003" type="AirConsole">
+                    <param id="0" name="Value">&quot;down&quot;</param>
+                    <param id="1" name="Object DeviceID">DeviceID1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="3386923644834775" type="System">
+                    <param id="0" name="Variable">DeviceID1_Move</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="9920525820498017">
+            <conditions>
+                <condition id="1" name="On specific message" sid="7958795597764617" type="AirConsole">
+                    <param id="0" name="Value">&quot;stop&quot;</param>
+                    <param id="1" name="Object DeviceID">DeviceID1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="5568085067276907" type="System">
+                    <param id="0" name="Variable">DeviceID1_Move</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="6402602440066194">
+            <conditions>
+                <condition id="1" name="On specific message" sid="9490376898633884" type="AirConsole">
+                    <param id="0" name="Value">&quot;stop&quot;</param>
+                    <param id="1" name="Object DeviceID">DeviceID2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="6870953216200648" type="System">
+                    <param id="0" name="Variable">DeviceID2_Move</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="3537924423581715">
+            <conditions>
+                <condition id="1" name="On specific message" sid="3996110360039871" type="AirConsole">
+                    <param id="0" name="Value">&quot;up&quot;</param>
+                    <param id="1" name="Object DeviceID">DeviceID2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="7837342565797404" type="System">
+                    <param id="0" name="Variable">DeviceID2_Move</param>
+                    <param id="1" name="Value">-1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="7369642420339856">
+            <conditions>
+                <condition id="1" name="On specific message" sid="7838127501225642" type="AirConsole">
+                    <param id="0" name="Value">&quot;down&quot;</param>
+                    <param id="1" name="Object DeviceID">DeviceID2</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-9" name="Set value" sid="1278507393602976" type="System">
+                    <param id="0" name="Variable">DeviceID2_Move</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="4441316760762708">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="6990252946529307" type="System">
+                    <param id="0" name="Variable">DeviceID1_Move</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="2739160272351937">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="8766694916706464" type="System">
+                    <param id="0" name="Variable">DeviceID1_Move</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">-1</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="1239328288076773">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="3746673796187899" type="System">
+                    <param id="0" name="Variable">DeviceID2_Move</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="5561974685828185">
+            <conditions>
+                <condition id="-14" name="Compare variable" sid="832581044472248" type="System">
+                    <param id="0" name="Variable">DeviceID2_Move</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">-1</param>
+                </condition>
+            </conditions>
+            <actions />
+        </event-block>
+        <event-block sid="2962176765988826">
+            <conditions />
+            <actions>
+                <action id="-9" name="Set value" sid="9966791190559338" type="System">
+                    <param id="0" name="Variable">ScoreRight</param>
+                    <param id="1" name="Value">ScoreRight + 1</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="7426501037804129">
+            <conditions />
+            <actions>
+                <action id="-9" name="Set value" sid="5856747101046602" type="System">
+                    <param id="0" name="Variable">ScoreLeft</param>
+                    <param id="1" name="Value">ScoreLeft + 1</param>
+                </action>
+            </actions>
+        </event-block>
+    </events>
+</c2eventsheet>
