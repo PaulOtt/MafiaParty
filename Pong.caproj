@@ -8,7 +8,7 @@
     <author-website>http://www.airconsole.com</author-website>
     <app-id>com.mycompany.myapp</app-id>
     <unique-id>7z1shk1n79lm</unique-id>
-    <saved-with-version>23300</saved-with-version>
+    <saved-with-version>23900</saved-with-version>
     <used-plugins>
         <plugin author="N-Dream AG" id="AirConsole" version="1">AirConsole</plugin>
         <plugin author="Scirra" id="Arr" version="1">Array</plugin>
@@ -63,22 +63,25 @@
                 <type>PlayerName</type>
             </container>
             <animation-folder>
-                <animation framecount="1" loop="0" name="A1" pingpong="0" repeatcount="1" repeatto="0" sid="734483345466429" speed="5">
+                <animation framecount="1" loop="0" name="A1" pingpong="0" repeatcount="1" repeatto="0" sid="734483345466429" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
-                <animation framecount="1" loop="0" name="A2" pingpong="0" repeatcount="1" repeatto="0" sid="302231976731106" speed="5">
+                <animation framecount="1" loop="0" name="A2" pingpong="0" repeatcount="1" repeatto="0" sid="302231976731106" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
-                <animation framecount="1" loop="0" name="A3" pingpong="0" repeatcount="1" repeatto="0" sid="164543780763656" speed="5">
+                <animation framecount="1" loop="0" name="A3" pingpong="0" repeatcount="1" repeatto="0" sid="164543780763656" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
-                <animation framecount="1" loop="0" name="A4" pingpong="0" repeatcount="1" repeatto="0" sid="299266949242815" speed="5">
+                <animation framecount="1" loop="0" name="A4" pingpong="0" repeatcount="1" repeatto="0" sid="299266949242815" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
-                <animation framecount="1" loop="0" name="A5" pingpong="0" repeatcount="1" repeatto="0" sid="654378372575813" speed="5">
+                <animation framecount="1" loop="0" name="A5" pingpong="0" repeatcount="1" repeatto="0" sid="654378372575813" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
-                <animation framecount="1" loop="0" name="A6" pingpong="0" repeatcount="1" repeatto="0" sid="300867369086173" speed="5">
+                <animation framecount="1" loop="0" name="A6" pingpong="0" repeatcount="1" repeatto="0" sid="300867369086173" speed="0">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+                <animation framecount="1" loop="0" name="A0" pingpong="0" repeatcount="1" repeatto="0" sid="742153328753887" speed="0">
                     <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
                 </animation>
             </animation-folder>
@@ -95,6 +98,14 @@
         </object-type>
         <object-type global="1" name="Dictionary" sid="324706861539580">
             <plugin id="Dictionary" />
+        </object-type>
+        <object-type name="Marker" sid="757268129192306">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="287274618024572" speed="5">
+                    <frame duration="1" hotspotX="1" hotspotY="1" />
+                </animation>
+            </animation-folder>
         </object-type>
     </object-folder>
     <families />

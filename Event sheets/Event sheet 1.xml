@@ -24,7 +24,11 @@
             <actions>
                 <action id="0" name="Add key" sid="736496360920233" type="Dictionary">
                     <param id="0" name="Key">&quot;&quot; &amp; AirConsole.DeviceIDJoin</param>
-                    <param id="1" name="Value">&quot;&quot; &amp; AirConsole.NicknameJoin</param>
+                    <param id="1" name="Value">&quot;&quot; &amp; AirConsole.DeviceIDJoin</param>
+                </action>
+                <action id="-3" name="Set position" sid="271077814174053" type="Marker">
+                    <param id="0" name="X">(120 * Dictionary.Count) - 60</param>
+                    <param id="1" name="Y">50</param>
                 </action>
                 <action id="-3" name="Create object" sid="766539166321186" type="System">
                     <param id="0" name="Object to create">Avatar</param>
@@ -32,12 +36,25 @@
                     <param id="2" name="X">(120 * Dictionary.Count) - 60</param>
                     <param id="3" name="Y">50</param>
                 </action>
-                <action id="4" name="Set animation" sid="608842883386598" type="Avatar">
-                    <param id="0" name="Animation">&quot;A&quot; &amp; Dictionary.Count</param>
-                    <param id="1" name="From">1</param>
-                </action>
             </actions>
             <sub-events>
+                <event-block sid="202078936749818">
+                    <conditions>
+                        <condition id="-13" name="Pick nth instance" sid="127059617996525" type="System">
+                            <param id="0" name="Object">Avatar</param>
+                            <param id="1" name="Instance">Dictionary.Count</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="4" name="Set animation" sid="608842883386598" type="Avatar">
+                            <param id="0" name="Animation">&quot;A&quot; &amp; Dictionary.Count</param>
+                            <param id="1" name="From">1</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="417593587980237" type="Avatar">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                    </actions>
+                </event-block>
                 <event-block sid="981362016837737">
                     <conditions>
                         <condition id="0" name="Compare text" sid="639666905471242" type="PlayerName">
@@ -47,11 +64,14 @@
                     </conditions>
                     <actions>
                         <action id="0" name="Set text" sid="878813367150625" type="PlayerName">
-                            <param id="0" name="Text">AirConsole.NicknameJoin</param>
+                            <param id="0" name="Text">&quot;Player &quot; &amp; AirConsole.DeviceIDJoin</param>
                         </action>
                         <action id="-3" name="Set position" sid="310534923410387" type="PlayerName">
                             <param id="0" name="X">(120 * Dictionary.Count) - 120</param>
                             <param id="1" name="Y">85</param>
+                        </action>
+                        <action id="-15" name="Set visible" sid="799944658739867" type="PlayerName">
+                            <param id="0" name="Visibility">1</param>
                         </action>
                     </actions>
                 </event-block>
@@ -71,12 +91,7 @@
             <conditions>
                 <condition id="5" name="On message" sid="5586979389551446" type="AirConsole" />
             </conditions>
-            <actions>
-                <action id="-9" name="Set value" sid="6423854131112854" type="System">
-                    <param id="0" name="Variable">DeviceID1_Move</param>
-                    <param id="1" name="Value">-1</param>
-                </action>
-            </actions>
+            <actions />
             <sub-events>
                 <event-block sid="401355536248670">
                     <conditions>
@@ -117,13 +132,13 @@
                                 <event-block sid="122211200230906">
                                     <conditions>
                                         <condition id="0" name="Compare text" sid="201328898235146" type="PlayerName">
-                                            <param id="0" name="Text to compare">&quot;&quot; &amp; AirConsole.Nickname</param>
+                                            <param id="0" name="Text to compare">&quot;Player &quot; &amp; AirConsole.DeviceID</param>
                                             <param id="1" name="Case sensitivity">0</param>
                                         </condition>
                                     </conditions>
                                     <actions>
                                         <action id="1" name="Set key" sid="685648395025978" type="Dictionary">
-                                            <param id="0" name="Key">&quot;&quot; &amp; AirConsole.DeviceIDJoin</param>
+                                            <param id="0" name="Key">&quot;&quot; &amp; AirConsole.DeviceID</param>
                                             <param id="1" name="Value">right(AirConsole.Message, len(AirConsole.Message)-4)</param>
                                         </action>
                                         <action id="0" name="Set text" sid="706910876876130" type="PlayerName">
