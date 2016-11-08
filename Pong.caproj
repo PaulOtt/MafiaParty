@@ -137,5 +137,7 @@
             <file name="loading-logo.png" />
         </file-folder>
         <file name="controller.html" />
+        <file name="airconsole-keyboard.css" />
+        <file name="airconsole-keyboard.js" />
     </files-folder>
 </c2project>
