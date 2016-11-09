@@ -4,7 +4,7 @@
     <name>Event sheet 1</name>
     <events>
         <variable constant="0" name="ScoreRight" sid="5702368838418558" static="0" type="number">0</variable>
-        <variable constant="0" name="ScoreLeft" sid="8535367273249603" static="0" type="number">0</variable>
+        <variable constant="0" name="Started" sid="8535367273249603" static="0" type="number">0</variable>
         <variable constant="0" name="DeviceID2_Move" sid="3771686039003392" static="0" type="number">0</variable>
         <variable constant="0" name="DeviceID1_Move" sid="3125130464879804" static="0" type="number">0</variable>
         <variable constant="0" name="DeviceID2" sid="9974100948324811" static="0" type="number">0</variable>
@@ -15,6 +15,10 @@
             </conditions>
             <actions>
                 <action id="3" name="Game ready" sid="2587117303863211" type="AirConsole" />
+                <action id="-3" name="Set position" sid="846536855989566" type="Marker">
+                    <param id="0" name="X">(120 * Dictionary.KeyCount) - 60</param>
+                    <param id="1" name="Y">50</param>
+                </action>
             </actions>
         </event-block>
         <event-block sid="5336486875330162">
@@ -22,39 +26,53 @@
                 <condition id="2" name="On device join" sid="7925310463595786" type="AirConsole" />
             </conditions>
             <actions>
+                <action id="-9" name="Set value" sid="578888360287130" type="System">
+                    <param id="0" name="Variable">Started</param>
+                    <param id="1" name="Value">1</param>
+                </action>
                 <action id="0" name="Add key" sid="736496360920233" type="Dictionary">
                     <param id="0" name="Key">&quot;&quot; &amp; AirConsole.DeviceIDJoin</param>
                     <param id="1" name="Value">&quot;&quot; &amp; AirConsole.DeviceIDJoin</param>
                 </action>
                 <action id="-3" name="Set position" sid="271077814174053" type="Marker">
-                    <param id="0" name="X">(120 * Dictionary.Count) - 60</param>
+                    <param id="0" name="X">(120 * Dictionary.KeyCount) - 60</param>
                     <param id="1" name="Y">50</param>
                 </action>
                 <action id="-3" name="Create object" sid="766539166321186" type="System">
                     <param id="0" name="Object to create">Avatar</param>
                     <param id="1" name="Layer">0</param>
-                    <param id="2" name="X">(120 * Dictionary.Count) - 60</param>
-                    <param id="3" name="Y">50</param>
+                    <param id="2" name="X">Marker.X</param>
+                    <param id="3" name="Y">Marker.Y</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-block sid="280622173719442">
+            <conditions>
+                <condition id="-18" name="On created" sid="274095880287626" type="Avatar" />
+                <condition id="-14" name="Compare variable" sid="269669142020864" type="System">
+                    <param id="0" name="Variable">Started</param>
+                    <param id="1" name="Comparison">0</param>
+                    <param id="2" name="Value">1</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="4" name="Set animation" sid="608842883386598" type="Avatar">
+                    <param id="0" name="Animation">&quot;A&quot; &amp; Dictionary.KeyCount</param>
+                    <param id="1" name="From">1</param>
+                </action>
+                <action id="-15" name="Set visible" sid="417593587980237" type="Avatar">
+                    <param id="0" name="Visibility">1</param>
+                </action>
+                <action id="-3" name="Set position" sid="312944864399323" type="Avatar">
+                    <param id="0" name="X">Marker.X</param>
+                    <param id="1" name="Y">Marker.Y</param>
+                </action>
+                <action id="-3" name="Set position" sid="665447111097476" type="Marker">
+                    <param id="0" name="X">(120 * Dictionary.KeyCount) - 60</param>
+                    <param id="1" name="Y">50</param>
                 </action>
             </actions>
             <sub-events>
-                <event-block sid="202078936749818">
-                    <conditions>
-                        <condition id="-13" name="Pick nth instance" sid="127059617996525" type="System">
-                            <param id="0" name="Object">Avatar</param>
-                            <param id="1" name="Instance">Dictionary.Count</param>
-                        </condition>
-                    </conditions>
-                    <actions>
-                        <action id="4" name="Set animation" sid="608842883386598" type="Avatar">
-                            <param id="0" name="Animation">&quot;A&quot; &amp; Dictionary.Count</param>
-                            <param id="1" name="From">1</param>
-                        </action>
-                        <action id="-15" name="Set visible" sid="417593587980237" type="Avatar">
-                            <param id="0" name="Visibility">1</param>
-                        </action>
-                    </actions>
-                </event-block>
                 <event-block sid="981362016837737">
                     <conditions>
                         <condition id="0" name="Compare text" sid="639666905471242" type="PlayerName">
@@ -67,8 +85,8 @@
                             <param id="0" name="Text">&quot;Player &quot; &amp; AirConsole.DeviceIDJoin</param>
                         </action>
                         <action id="-3" name="Set position" sid="310534923410387" type="PlayerName">
-                            <param id="0" name="X">(120 * Dictionary.Count) - 120</param>
-                            <param id="1" name="Y">85</param>
+                            <param id="0" name="X">Marker.X - 60</param>
+                            <param id="1" name="Y">Marker.Y + 35</param>
                         </action>
                         <action id="-15" name="Set visible" sid="799944658739867" type="PlayerName">
                             <param id="0" name="Visibility">1</param>
@@ -279,8 +297,8 @@
             <conditions />
             <actions>
                 <action id="-9" name="Set value" sid="5856747101046602" type="System">
-                    <param id="0" name="Variable">ScoreLeft</param>
-                    <param id="1" name="Value">ScoreLeft + 1</param>
+                    <param id="0" name="Variable">Started</param>
+                    <param id="1" name="Value">Started + 1</param>
                 </action>
             </actions>
         </event-block>
